@@ -1,6 +1,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
+const routes = require('./routes')
 
 // 設定環境變數
 if (process.env.NODE_ENV !== 'production') {
@@ -24,8 +25,9 @@ const app = express()
 
 //設定固定樣板 ※exphbs.engine()
 app.engine('hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
-app.set("view engine", 'hbs')
+app.set('view engine', 'hbs')
 
+app.use(routes)
 
 app.get('/', (req, res) => {
   res.render('index')
