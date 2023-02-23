@@ -6,7 +6,10 @@
     <img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png"
       style="verical:center;max-width: 30%; height: auto">
     <p class="tranferredWord mt-3" style="display: block">Success! Please use the link below:</p>
-    <input class="success-word" type="url" href="#" placeholder="Input URL here">
-    <button>COPY</button>
+    <form class="mb-3" action="/" method="POST">
+      {{#if shortenOne}}<a class="final-result" type="url">{{shortenOne}}</a>
+      {{else}}<input class="show-url" type="url" name="originUrl" placeholder="Input URL here" required>
+      <button class="btn btn-info" type="submit">SHORTEN</button>{{/if}}
+    </form>
   </div>
 </div>
