@@ -7,9 +7,10 @@
       style="verical:center;max-width: 30%; height: auto">
     <p class="tranferredWord mt-3" style="display: block">Success! Please use the link below:</p>
     <form class="mb-3" action="/" method="POST">
-      {{#if shortenOne}}<a class="final-result" type="url">{{shortenOne}}</a>
+      {{#if shortenOne}}<a class="final-result" type="url">{{origin}}/{{shortenOne}}</a>
+      <button class="btn btn-outline-success" type="submit">COPY</button>
       {{else}}<input class="show-url" type="url" name="originUrl" placeholder="Input URL here" required>
-      <button class="btn btn-info" type="submit">SHORTEN</button>{{/if}}
+      <button class="btn btn-success" type="submit">SHORTEN</button>{{/if}}
     </form>
   </div>
 </div>

@@ -4,7 +4,7 @@ function transferUrl() {
   for (let i = 0; i < 5; i++) {
     randomNumber += dataList[Math.floor(Math.random() * dataList.length)]
   }
-  return `https://nero-shortener/${randomNumber}`
+  return randomNumber
 }
 
 module.exports = transferUrl
