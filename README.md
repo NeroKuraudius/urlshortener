@@ -1,5 +1,6 @@
 # 短網址產生器
 
+![image](https://github.com/NeroKuraudius/urlshortener/blob/main/public/image/preview.jpg)
 
 ## 簡介
 可將一般網址縮短成固定格式的短網址
