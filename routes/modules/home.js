@@ -32,13 +32,15 @@ router.post('/', (req, res) => {
 })
 
 
-// 點擊短網址呈現原網頁
+// // 點擊短網址呈現原網頁
 router.get('/:shortenedUrl', (req, res) => {
   const { shortenedUrl } = req.params
 
   Url.findOne({ shortenedUrl })
     .then(data => {
-      if (!data) { res.send("Error! We didn't find this url Please check it again.") }
+      if (!data) {
+        res.send("Error! We didn't find this url.\nPlease check it again.")
+      }
       res.redirect(data.originUrl)
     })
 })

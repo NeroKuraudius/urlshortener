@@ -2,15 +2,30 @@
 
 <div class="container mt-5" style="border: 1px solid lightgray;margin:0 auto;max-width:50%">
   <div class="subcontainer" style="text-align: center;">
-    <p style="display: block;">Shorten the distance of you and network</p>
+    <p style="display: block;font-size:30px">Shorten the distance of you and network</p>
     <img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png"
       style="verical:center;max-width: 30%; height: auto">
-    <p class="tranferredWord mt-3" style="display: block">Success! Please use the link below:</p>
+    {{#if shortenOne}}
+    <p class="tranferredWord mt-3" style="display: block;font-size:18px">Success! Please use the link below:</p>
+    <a class="final-result" href="{{origin}}/{{shortenOne}}" type="url" target="_blank">
+      {{origin}}/{{shortenOne}}
+    </a>
+    <button class="btn btn-outline-warning" onclick="copy()">COPY</button>
+    {{else}}
     <form class="mb-3" action="/" method="POST">
-      {{#if shortenOne}}<a class="final-result" type="url">{{origin}}/{{shortenOne}}</a>
-      <button class="btn btn-outline-success" type="submit">COPY</button>
-      {{else}}<input class="show-url" type="url" name="originUrl" placeholder="Input URL here" required>
-      <button class="btn btn-success" type="submit">SHORTEN</button>{{/if}}
+      <input class="show-url m-3" type="url" name="originUrl" placeholder="Input URL here" required>
+      <button class="btn btn-secondary" type="submit">SHORTEN</button>
     </form>
+    {{/if}}
   </div>
 </div>
+
+{{!-- 一鍵複製功能 --}}
+<script>
+  function copy() {
+    const URL = document.querySelector('.final-result').innerText
+    navigator.clipboard.writeText(URL)
+      .then(() => alert('The URL has been copied.'))
+      .catch(() => alert('Failed to copy.'))
+  }
+</script>
