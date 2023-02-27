@@ -9,7 +9,7 @@ const transferUrl = require('../../public/javascripts/transferUrl')
 // 首頁渲染
 router.get('/', (req, res) => {
   const shortenOne = false
-  res.render('index', { shortenOne })
+  return res.render('index', { shortenOne })
 })
 
 
@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
     .then(data => data ? data : Url.create({ originUrl: req.body.originUrl, shortenedUrl: shortenOne }))
     // 以該資料重新渲染頁面
     .then(data => {
-      res.render('index', { origin: req.headers.origin, shortenOne: data.shortenedUrl })
+      return res.render('index', { origin: req.headers.origin, shortenOne: data.shortenedUrl })
     })
     .catch(error => console.log(error))
 })
@@ -39,9 +39,9 @@ router.get('/:shortenedUrl', (req, res) => {
   Url.findOne({ shortenedUrl })
     .then(data => {
       if (!data) {
-        res.send("Error! We didn't find this url.\nPlease check it again.")
+        return res.send("Error! We didn't find this url.\nPlease check it again.")
       }
-      res.redirect(data.originUrl)
+      return res.redirect(data.originUrl)
     })
 })
 
